@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, Instagram, MapPin, Phone, CheckCircle2, Menu, X, Heart, Apple, Leaf } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { ArrowRight, Instagram, MapPin, Phone, Menu, X, CheckCircle2, ChevronDown, User, Heart, Brain, Star } from 'lucide-react';
 import './index.css';
 
-/* Intersection Observer Hook for animations */
 function useReveal() {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,47 +23,46 @@ function useReveal() {
   }, []);
 }
 
-const WHATSAPP_LINK = "https://wa.me/5531997917492?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Nutricionista%20Rayane%20Couto!";
-const INSTAGRAM_LINK = "https://www.instagram.com/rayanecouto.nutri/";
+const WHATSAPP_LINK = "https://wa.me/5562994515447?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Psic%C3%B3loga%20Ludmylla!";
+const INSTAGRAM_LINK = "https://www.instagram.com/psi.ludmyllavaladares/";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[#F2F0E9]/95 backdrop-blur-md border-b border-[#16423C]/10 py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#F9F5F1] shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-        <a href="#inicio" className="font-serif text-2xl font-medium tracking-wide text-[#16423C]">
-          Rayane Couto
+        <a href="#inicio" className="font-heading text-2xl font-bold tracking-tight text-[#4A3F35]">
+          Ludmylla Valadares
         </a>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 items-center cursor-pointer">
-          <a href="#sobre" className="text-[11px] font-semibold uppercase tracking-widest text-[#1C1C1C]/80 hover:text-[#D4AF37] transition-colors">Sobre</a>
-          <a href="#atendimento" className="text-[11px] font-semibold uppercase tracking-widest text-[#1C1C1C]/80 hover:text-[#D4AF37] transition-colors">Atendimento</a>
-          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-widest font-semibold text-[#F2F0E9] bg-[#16423C] px-6 py-2.5 rounded-full hover:bg-opacity-90 transition-all">
-            Agendar Consulta
+        <div className="hidden md:flex gap-10 items-center">
+          <a href="#sobre" className="text-[13px] font-semibold text-[#4A3F35] hover:text-[#BFA785] transition-colors">Sobre</a>
+          <a href="#servicos" className="text-[13px] font-semibold text-[#4A3F35] hover:text-[#BFA785] transition-colors">Serviços</a>
+          <a href="#faq" className="text-[13px] font-semibold text-[#4A3F35] hover:text-[#BFA785] transition-colors">Dúvidas</a>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="text-[13px] font-bold text-[#F9F5F1] bg-[#BFA785] px-6 py-3 rounded-full hover:bg-[#4A3F35] transition-all duration-300">
+            Agendar Sessão
           </a>
         </div>
 
-        {/* Mobile menu toggle */}
-        <button className="md:hidden text-[#16423C]" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        <button className="md:hidden text-[#4A3F35]" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
 
-      {/* Mobile Menu Content */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-[#F2F0E9] border-b border-[#16423C]/10 flex flex-col items-center py-6 gap-6 transition-all duration-300 ${isOpen ? 'opacity-100 visible h-auto' : 'opacity-0 invisible h-0 py-0 overflow-hidden'}`}>
-        <a href="#sobre" onClick={() => setIsOpen(false)} className="text-xs uppercase tracking-widest font-semibold text-[#1C1C1C]/80">Sobre</a>
-        <a href="#atendimento" onClick={() => setIsOpen(false)} className="text-xs uppercase tracking-widest font-semibold text-[#1C1C1C]/80">Atendimento</a>
-        <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="text-xs uppercase tracking-widest font-semibold text-[#F2F0E9] bg-[#16423C] px-8 py-3 rounded-full mt-2">
-          Agendar Consulta
+      <div className={`md:hidden absolute top-full left-0 w-full bg-[#F9F5F1] border-t border-[#4A3F35]/10 flex flex-col items-center py-6 gap-6 transition-all duration-300 shadow-xl ${isOpen ? 'opacity-100 visible h-auto' : 'opacity-0 invisible h-0 py-0 overflow-hidden'}`}>
+        <a href="#sobre" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-[#4A3F35]">Sobre</a>
+        <a href="#servicos" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-[#4A3F35]">Serviços</a>
+        <a href="#faq" onClick={() => setIsOpen(false)} className="text-sm font-semibold text-[#4A3F35]">Dúvidas</a>
+        <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="text-sm font-bold text-[#F9F5F1] bg-[#BFA785] px-8 py-3 rounded-full mt-2">
+          Agendar Sessão
         </a>
       </div>
     </nav>
@@ -73,61 +71,61 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="inicio" className="pt-28 pb-20 md:pt-40 md:pb-32 px-6 md:px-12 min-h-screen flex items-center bg-[#F2F0E9] overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 w-full relative z-10">
-        
-        {/* Image Card */}
-        <div className="flex-1 order-1 lg:order-2 w-[85%] sm:w-full max-w-[320px] lg:max-w-md reveal-right relative mt-6 lg:mt-0 mx-auto">
-          
-          {/* Background Shape */}
-          <div className="absolute inset-0 bg-[#EBE7E0] rounded-[3rem] -rotate-6 scale-[1.05] -z-10 transition-transform hover:rotate-0" />
-          
-          <div className="relative w-full aspect-[4/5] object-cover rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#16423C]/10 border-[6px] border-[#F2F0E9]">
-            <img src="/fotos/Rayane1.png" alt="Rayane Couto Nutricionista" className="w-full h-full object-cover object-[center_20%]" />
+    <section id="inicio" className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 md:px-12 bg-[#F9F5F1] overflow-hidden min-h-[90vh] flex items-center relative">
+      {/* Decorative background shape */}
+      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#BFA785]/10 blob-shape-1 blur-3xl -z-10 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+
+        {/* Left Side: Text */}
+        <div className="reveal-left flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+          <div className="inline-block border border-[#BFA785] text-[#BFA785] rounded-full px-4 py-1.5 text-xs font-bold tracking-wide uppercase mb-6">
+            Psicologia Clínica
           </div>
 
-          {/* Badge Top Right */}
-          <div className="absolute -top-4 -right-6 lg:-right-12 bg-white/95 backdrop-blur-md px-3 py-2.5 lg:px-4 lg:py-3 rounded-2xl shadow-xl flex items-center gap-2 lg:gap-3 z-20">
-            <Apple className="w-4 h-4 lg:w-5 lg:h-5 text-[#D4AF37]" strokeWidth={1.5} />
-            <div className="text-left">
-              <p className="text-[8px] lg:text-[9px] font-bold text-[#1C1C1C] leading-tight uppercase tracking-wider">Plano Alimentar</p>
-              <p className="text-[8px] lg:text-[9px] font-bold text-[#1C1C1C] leading-tight uppercase tracking-wider">Personalizado</p>
-            </div>
-          </div>
-
-          {/* Badge Bottom Left */}
-          <div className="absolute -bottom-6 -left-6 lg:-left-12 bg-white/95 backdrop-blur-md px-4 py-3 lg:px-5 lg:py-4 rounded-3xl shadow-xl flex items-center gap-3 lg:gap-4 z-20">
-            <div className="bg-[#EBE7E0] p-1.5 lg:p-2 rounded-full">
-              <Heart className="w-4 h-4 lg:w-5 lg:h-5 text-[#16423C]" strokeWidth={1.5} />
-            </div>
-            <div className="text-left">
-              <p className="text-[10px] lg:text-xs font-bold text-[#1C1C1C] mb-0.5">Nutrição Humanizada</p>
-              <p className="text-[9px] lg:text-[10px] text-[#1C1C1C]/60 leading-tight">Cuidado individualizado</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Text */}
-        <div className="flex-1 reveal-left order-2 lg:order-1 text-center lg:text-left mt-10 lg:mt-0 flex flex-col items-center lg:items-start relative z-20">
-          
-          {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#EBE7E0] border border-[#16423C]/10 px-4 py-2 rounded-full mb-6">
-             <Leaf className="w-3.5 h-3.5 text-[#16423C]" />
-             <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-[#16423C] font-semibold">Nutrição Clínica • CRN-9 31953/P</span>
-          </div>
-
-          <h1 className="font-serif text-[2.8rem] leading-[1.05] md:text-7xl lg:text-[5rem] text-[#1C1C1C] mb-8">
-            Saúde de forma<br className="hidden lg:block"/> <i className="text-[#16423C] block lg:inline">responsável</i> e<br className="hidden lg:block"/> prazerosa.
+          <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#4A3F35] leading-[1.1] mb-6">
+            Sua saúde mental <br />
+            <span className="text-[#BFA785]">em primeiro lugar.</span>
           </h1>
-          <p className="text-[#1C1C1C]/75 text-base md:text-xl font-light mb-10 max-w-[320px] lg:max-w-lg mx-auto lg:mx-0 leading-relaxed text-center lg:text-left">
-            Te ajudo a melhorar sua relação com a alimentação e alcançar seus resultados de maneira leve, humana e sustentável.
+
+          <p className="text-[#4A3F35]/80 text-lg md:text-xl font-medium mb-10 max-w-lg leading-relaxed">
+            Descubra um espaço acolhedor e seguro para compreender suas emoções, vencer a ansiedade e construir uma vida com mais propósito.
           </p>
-          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 bg-[#16423C] text-[#F2F0E9] px-8 py-4 rounded-full uppercase text-[10px] md:text-xs tracking-widest font-semibold hover:bg-opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-xl shadow-[#16423C]/20">
-            Dar o primeiro passo
-            <ArrowRight className="w-4 h-4" />
-          </a>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[#4A3F35] text-[#F9F5F1] px-8 py-4 rounded-full font-bold text-sm hover:bg-[#BFA785] hover:scale-105 transition-all duration-300 shadow-xl shadow-[#4A3F35]/15">
+              Começar minha terapia
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
-        
+
+        {/* Right Side: Image with Organic Shape */}
+        <div className="reveal-right order-1 lg:order-2 flex justify-center lg:justify-end relative">
+          <div className="relative w-[300px] h-[400px] sm:w-[400px] sm:h-[500px] lg:w-[450px] lg:h-[600px]">
+            {/* Background blob */}
+            <div className="absolute inset-0 bg-[#BFA785] blob-shape-2 transform translate-x-4 translate-y-4 sm:translate-x-6 sm:translate-y-6" />
+
+            {/* Main Image with blob shape */}
+            <img
+              src="/fotos/Ludmylla5.png"
+              alt="Psicóloga Ludmylla Valadares"
+              className="absolute inset-0 w-full h-full object-cover blob-shape-1 shadow-xl z-10"
+            />
+
+            {/* Floating badge */}
+            <div className="absolute bottom-10 -left-6 sm:-left-12 bg-white px-6 py-4 rounded-2xl shadow-xl z-20 flex items-center gap-4 animate-float">
+              <div className="w-12 h-12 rounded-full bg-[#F9F5F1] flex items-center justify-center shrink-0">
+                <Heart className="w-6 h-6 text-[#BFA785]" fill="#BFA785" />
+              </div>
+              <div>
+                <p className="text-[#4A3F35] font-bold text-sm leading-tight">CRP 09/20060</p>
+                <p className="text-[#4A3F35]/60 text-xs font-medium">Profissional Registrada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
@@ -135,34 +133,49 @@ function Hero() {
 
 function About() {
   return (
-    <section id="sobre" className="py-24 md:py-32 bg-[#EBE7E0] px-6 md:px-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
-        <div className="flex-1 w-full max-w-md lg:max-w-full reveal-left">
-          <div className="relative aspect-[4/5] max-w-[460px] mx-auto lg:mr-auto">
-            <div className="absolute inset-0 bg-[#16423C]/5 translate-x-4 translate-y-4" />
-            <img src="/fotos/Rayane2.png" alt="Rayane Couto no consultório" className="w-full h-full object-cover relative z-10 shadow-xl" />
+    <section id="sobre" className="py-24 md:py-32 px-6 md:px-12 bg-[#F0EBE1] overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+        {/* Left Side: Image Collage */}
+        <div className="reveal-left relative w-full h-[500px] sm:h-[600px] lg:h-[700px]">
+          {/* Main Large Image */}
+          <div className="absolute top-0 left-0 w-[70%] h-[70%] rounded-[2rem] overflow-hidden shadow-2xl z-10">
+            <img src="/fotos/Ludmylla3.png" alt="Consultório" className="w-full h-full object-cover" />
           </div>
+          {/* Secondary Image Overlapping */}
+          <div className="absolute bottom-10 right-0 w-[55%] h-[50%] rounded-[2rem] overflow-hidden shadow-2xl border-8 border-[#F0EBE1] z-20">
+            <img src="/fotos/Ludmylla4.png" alt="Ludmylla Valadares" className="w-full h-full object-cover" />
+          </div>
+          {/* Decorative Dot pattern or small shape */}
+          <div className="absolute top-[65%] left-[-5%] w-24 h-24 bg-[#BFA785] rounded-full opacity-20 -z-10" />
         </div>
-        <div className="flex-1 reveal-right text-center lg:text-left">
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#1C1C1C] mb-8 leading-tight">
-            <i className="text-[#16423C]">Prazer,</i><br /> Rayane Couto.
+
+        {/* Right Side: Text */}
+        <div className="reveal-right">
+          <h3 className="text-[#BFA785] font-bold tracking-widest uppercase text-sm mb-4 border-b-2 border-[#BFA785] inline-block pb-1">Conheça a Profissional</h3>
+
+          <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-[#4A3F35] leading-tight mb-8">
+            Muito prazer, sou a <br />
+            <span className="text-[#BFA785]">Ludmylla Valadares.</span>
           </h2>
-          <div className="space-y-6 text-[#1C1C1C]/75 text-base md:text-lg font-light leading-relaxed">
+
+          <div className="space-y-6 text-[#4A3F35]/80 font-medium text-lg leading-relaxed">
             <p>
-              Sou nutricionista pela Universidade Federal de Minas Gerais (UFMG) e atuo nas áreas de Nutrição Clínica e Esportiva. Meu principal propósito é mostrar que é possível ter mais saúde, disposição e resultados excelentes sem abrir mão do que você gosta de comer.
+              Atuo como Psicóloga Clínica ajudando jovens e adultos a lidarem com a ansiedade, estresse e desafios nos relacionamentos. Meu consultório é um ambiente livre de julgamentos, focado totalmente no seu bem-estar.
             </p>
             <p>
-              Acredito profundamente em uma nutrição gentil e humana. O foco do nosso acompanhamento será sempre a construção de hábitos duradouros que se ajeitam à sua rotina real, e não dietas que não podem ser sustentadas a longo prazo.
+              Acredito que a psicoterapia não é apenas para tratar transtornos, mas uma ferramenta poderosa de autoconhecimento. Juntos, vamos identificar padrões de comportamento que te paralisam e construir caminhos mais saudáveis para o seu dia a dia.
             </p>
           </div>
-          <div className="mt-10 pt-8 border-t border-[#16423C]/15 grid grid-cols-2 gap-6 md:gap-4 text-left">
+
+          <div className="mt-10 flex gap-12">
             <div>
-              <p className="font-serif text-3xl md:text-4xl text-[#16423C] leading-none mb-2">UFMG</p>
-              <p className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#1C1C1C]/60 font-semibold">Formação</p>
+              <p className="font-heading text-3xl font-bold text-[#4A3F35]">Psicologia</p>
+              <p className="text-sm font-semibold text-[#BFA785] uppercase tracking-wider">Clínica</p>
             </div>
             <div>
-              <p className="font-serif text-3xl md:text-4xl text-[#16423C] leading-none mb-2">CRN-9</p>
-              <p className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#1C1C1C]/60 font-semibold">Nutricionista</p>
+              <p className="font-heading text-3xl font-bold text-[#4A3F35]">Online</p>
+              <p className="text-sm font-semibold text-[#BFA785] uppercase tracking-wider">e Presencial</p>
             </div>
           </div>
         </div>
@@ -172,50 +185,198 @@ function About() {
 }
 
 function Services() {
+  const services = [
+    {
+      icon: <User className="w-7 h-7 text-[#F9F5F1]" />,
+      title: 'Terapia Individual',
+      desc: 'Um espaço totalmente seu para trabalhar questões emocionais profundas, conflitos e autoconhecimento.'
+    },
+    {
+      icon: <Brain className="w-7 h-7 text-[#F9F5F1]" />,
+      title: 'Gestão da Ansiedade',
+      desc: 'Técnicas e acolhimento para reduzir o impacto da ansiedade na sua rotina e devolver sua qualidade de vida.'
+    },
+    {
+      icon: <Heart className="w-7 h-7 text-[#F9F5F1]" />,
+      title: 'Relacionamentos',
+      desc: 'Apoio na resolução de conflitos familiares, amorosos ou profissionais, focando na comunicação assertiva.'
+    },
+    {
+      icon: <Star className="w-7 h-7 text-[#F9F5F1]" />,
+      title: 'Desenvolvimento Pessoal',
+      desc: 'Direcionamento para quem busca clareza em transições de vida, carreira e fortalecimento da autoestima.'
+    }
+  ];
+
   return (
-    <section id="atendimento" className="py-24 md:py-32 px-6 md:px-12 bg-[#F2F0E9]">
+    <section id="servicos" className="py-24 md:py-32 px-6 md:px-12 bg-[#F9F5F1]">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-20 reveal-up">
-          <p className="text-xs md:text-sm uppercase tracking-[0.2em] mb-4 text-[#D4AF37] font-semibold">O Método</p>
-          <h2 className="font-serif text-4xl md:text-6xl text-[#1C1C1C] leading-tight">Como funciona o acompanhamento?</h2>
+
+        <div className="text-center mb-20 reveal-up">
+          <h3 className="text-[#BFA785] font-bold tracking-widest uppercase text-sm mb-4 border-b-2 border-[#BFA785] inline-block pb-1">Especialidades</h3>
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#4A3F35] leading-tight">
+            Como a terapia <br />
+            <span className="text-[#BFA785]">pode te ajudar?</span>
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto">
-          <div className="flex gap-6 reveal-up" style={{ transitionDelay: '0ms' }}>
-            <div className="shrink-0 font-serif text-4xl md:text-5xl text-[#D4AF37] opacity-80">01</div>
-            <div>
-              <h3 className="text-lg md:text-xl font-medium text-[#16423C] mb-3 uppercase tracking-wider">Nutrição Clínica & Esportiva</h3>
-              <p className="text-[#1C1C1C]/70 font-light leading-relaxed text-sm md:text-base">
-                Planejamento focado nos seus objetivos estéticos e de saúde. Garantimos a nutrição e energia adequadas para perda de gordura, performance em treinos ou ajustes metabólicos gerais.
+        {/* 2x2 Grid (or 3x2 if 6 items) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+          {services.map((service, idx) => (
+            <div key={idx} className="bg-white rounded-[2rem] p-10 shadow-lg shadow-[#4A3F35]/5 hover:-translate-y-2 transition-transform duration-300 reveal-up" style={{ transitionDelay: `${idx * 100}ms` }}>
+              <div className="w-16 h-16 bg-[#BFA785] rounded-2xl flex items-center justify-center mb-6">
+                {service.icon}
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-[#4A3F35] mb-4">{service.title}</h3>
+              <p className="text-[#4A3F35]/70 font-medium text-base leading-relaxed mb-8">
+                {service.desc}
               </p>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[#BFA785] font-bold text-sm uppercase tracking-wide group">
+                Saiba Mais
+                <span className="bg-[#BFA785]/10 w-8 h-8 rounded-full flex items-center justify-center group-hover:bg-[#BFA785] group-hover:text-white transition-colors">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </a>
             </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const scrollRef = useRef(null);
+
+  const reviews = [
+    { name: 'Ana S.', text: 'Excelente profissional. Me ajudou a passar por uma crise de ansiedade terrível com muita paciência e empatia. Recomendo demais!' },
+    { name: 'Carlos M.', text: 'A terapia com a Ludmylla mudou minha forma de ver os problemas. O ambiente do consultório é acolhedor e a escuta dela é muito atenta.' },
+    { name: 'Mariana C.', text: 'Fazer terapia online com ela tem sido tão eficaz quanto presencial. Me sinto muito à vontade para conversar sobre qualquer assunto.' },
+    { name: 'João P.', text: 'A Ludmylla é fantástica. Muito assertiva nas pontuações e me fez entender coisas sobre mim que eu nunca havia percebido.' }
+  ];
+
+  return (
+    <section className="py-24 md:py-32 px-6 md:px-12 bg-[#F0EBE1] overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+        {/* Left Col: Text */}
+        <div className="lg:col-span-4 reveal-left">
+          <h3 className="text-[#BFA785] font-bold tracking-widest uppercase text-sm mb-4 border-b-2 border-[#BFA785] inline-block pb-1">Depoimentos</h3>
+          <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-[#4A3F35] leading-tight mb-6">
+            O que dizem os <span className="text-[#BFA785]">pacientes.</span>
+          </h2>
+          <p className="text-[#4A3F35]/80 font-medium text-lg mb-8">
+            O relato e a evolução de quem já iniciou a jornada de autoconhecimento e cuidado através da psicoterapia.
+          </p>
+        </div>
+
+        {/* Right Col: Horizontal Scroll Slider */}
+        <div className="lg:col-span-8 reveal-right">
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto hide-scrollbar pb-8 pt-4 px-4 -mx-4 cursor-grab active:cursor-grabbing"
+            style={{ scrollSnapType: 'x mandatory' }}
+          >
+            {reviews.map((review, idx) => (
+              <div key={idx} className="min-w-[300px] md:min-w-[350px] bg-white rounded-[2rem] p-8 shadow-lg shadow-[#4A3F35]/5 shrink-0" style={{ scrollSnapAlign: 'start' }}>
+                <div className="flex gap-1 mb-6">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} className="w-5 h-5 fill-[#D4AF37] text-[#D4AF37]" />
+                  ))}
+                </div>
+                <p className="text-[#4A3F35]/80 font-medium text-base leading-relaxed italic mb-8">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-4 border-t border-[#4A3F35]/10 pt-6">
+                  <div className="w-12 h-12 bg-[#BFA785]/20 rounded-full flex items-center justify-center text-[#BFA785] font-bold text-xl">
+                    {review.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#4A3F35]">{review.name}</p>
+                    <p className="text-xs text-[#4A3F35]/60 font-semibold uppercase tracking-widest">Paciente</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="flex gap-6 reveal-up" style={{ transitionDelay: '100ms' }}>
-            <div className="shrink-0 font-serif text-4xl md:text-5xl text-[#D4AF37] opacity-80">02</div>
-            <div>
-              <h3 className="text-lg md:text-xl font-medium text-[#16423C] mb-3 uppercase tracking-wider">Plano Individualizado</h3>
-              <p className="text-[#1C1C1C]/70 font-light leading-relaxed text-sm md:text-base">
-                Diga adeus a cardápios engessados. Criamos juntos uma estratégia alimentar na hora da consulta, prezando por viabilidade financeira, horários e suas comidas preferidas.
-              </p>
-            </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const faqs = [
+    { q: 'Como funcionam os atendimentos?', a: 'As sessões ocorrem semanalmente, com duração de 50 minutos. Podem ser realizadas de forma presencial no consultório em Goiânia ou online para todo o mundo.' },
+    { q: 'Qual a diferença da terapia online para a presencial?', a: 'A terapia online possui a mesma eficácia da presencial. O diferencial é a comodidade de ser atendido no conforto da sua casa, bastando um celular ou computador com internet e um ambiente privativo.' },
+    { q: 'Você atende planos de saúde?', a: 'Meus atendimentos são particulares, mas emito recibo para que você possa solicitar o reembolso junto à sua operadora de saúde (consulte as regras do seu plano).' },
+    { q: 'Nunca fiz terapia, o que devo falar na primeira sessão?', a: 'Não se preocupe em preparar um roteiro. A primeira sessão é um bate-papo acolhedor para nos conhecermos, onde eu te ajudarei com perguntas guiadas para entender o que te levou a buscar ajuda.' },
+    { q: 'Quanto tempo dura o tratamento psicológico?', a: 'Não há um tempo pré-determinado. A alta terapêutica depende das demandas individuais de cada paciente e do seu desenvolvimento ao longo do processo.' },
+    { q: 'Como agendar minha sessão?', a: 'Basta clicar em qualquer botão de agendamento aqui no site, e você será direcionado para o meu WhatsApp, onde minha equipe ou eu encontraremos o melhor horário para você.' }
+  ];
+
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFaq = (index) => {
+    if (openIndex === index) {
+      setOpenIndex(null);
+    } else {
+      setOpenIndex(index);
+    }
+  };
+
+  return (
+    <section id="faq" className="py-24 md:py-32 px-6 md:px-12 bg-[#F9F5F1]">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16 reveal-up">
+          <h3 className="text-[#BFA785] font-bold tracking-widest uppercase text-sm mb-4 border-b-2 border-[#BFA785] inline-block pb-1">Tire suas dúvidas</h3>
+          <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-[#4A3F35]">
+            Perguntas Frequentes
+          </h2>
+        </div>
+
+        {/* 2 Columns FAQ */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="space-y-6">
+            {faqs.slice(0, 3).map((faq, index) => (
+              <div key={index} className="bg-white rounded-[1.5rem] p-2 shadow-sm border border-[#4A3F35]/5 reveal-up" style={{ transitionDelay: `${index * 100}ms` }}>
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full px-6 py-4 flex justify-between items-center text-left"
+                >
+                  <span className="font-bold text-[#4A3F35] text-base md:text-lg pr-4">{faq.q}</span>
+                  <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors ${openIndex === index ? 'bg-[#BFA785] text-white' : 'bg-[#F9F5F1] text-[#BFA785]'}`}>
+                    <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`} />
+                  </div>
+                </button>
+                <div className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-[500px] pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-[#4A3F35]/70 font-medium text-base leading-relaxed">{faq.a}</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="flex gap-6 reveal-up" style={{ transitionDelay: '200ms' }}>
-            <div className="shrink-0 font-serif text-4xl md:text-5xl text-[#D4AF37] opacity-80">03</div>
-            <div>
-              <h3 className="text-lg md:text-xl font-medium text-[#16423C] mb-3 uppercase tracking-wider">Sem Caminhos Extremistas</h3>
-              <p className="text-[#1C1C1C]/70 font-light leading-relaxed text-sm md:text-base">
-                Te ensinarei a ter autonomia na hora de se alimentar, criando escolhas de forma inteligente. Comer com prazer é essencial para qualquer constância de longo prazo.
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-6 reveal-up" style={{ transitionDelay: '300ms' }}>
-            <div className="shrink-0 font-serif text-4xl md:text-5xl text-[#D4AF37] opacity-80">04</div>
-            <div>
-              <h3 className="text-lg md:text-xl font-medium text-[#16423C] mb-3 uppercase tracking-wider">Apoio a cada passo</h3>
-              <p className="text-[#1C1C1C]/70 font-light leading-relaxed text-sm md:text-base">
-                Atendimento presencial focado ou teleatendimento confortável de casa. Disponibilizo suporte via WhatsApp contínuo para eventuais dúvidas após sua consulta.
-              </p>
-            </div>
+          <div className="space-y-6">
+            {faqs.slice(3, 6).map((faq, index) => {
+              const actualIndex = index + 3;
+              return (
+                <div key={actualIndex} className="bg-white rounded-[1.5rem] p-2 shadow-sm border border-[#4A3F35]/5 reveal-up" style={{ transitionDelay: `${actualIndex * 100}ms` }}>
+                  <button
+                    onClick={() => toggleFaq(actualIndex)}
+                    className="w-full px-6 py-4 flex justify-between items-center text-left"
+                  >
+                    <span className="font-bold text-[#4A3F35] text-base md:text-lg pr-4">{faq.q}</span>
+                    <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors ${openIndex === actualIndex ? 'bg-[#BFA785] text-white' : 'bg-[#F9F5F1] text-[#BFA785]'}`}>
+                      <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${openIndex === actualIndex ? 'rotate-180' : ''}`} />
+                    </div>
+                  </button>
+                  <div className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openIndex === actualIndex ? 'max-h-[500px] pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <p className="text-[#4A3F35]/70 font-medium text-base leading-relaxed">{faq.a}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -223,72 +384,70 @@ function Services() {
   );
 }
 
-function Strip() {
+function Footer() {
   return (
-    <div className="bg-[#16423C] py-20 px-6 md:px-12 text-center overflow-hidden">
-      <p className="reveal-up font-serif text-[#F2F0E9] text-3xl md:text-5xl lg:text-6xl tracking-wide font-light max-w-4xl mx-auto italic leading-snug">
-        "Descubra que o <span className="font-medium">equilíbrio</span> é o melhor caminho para resultados <span className="font-medium">consistentes.</span>"
-      </p>
-    </div>
-  )
-}
+    <footer className="bg-[#4A3F35] pt-24 pb-12 px-6 md:px-12 text-[#F9F5F1]">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 mb-16 reveal-up">
 
-function LocationAndFooter() {
-  return (
-    <footer className="bg-[#EBE7E0] pt-24 pb-12 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 mb-20 reveal-up">
+        {/* Left Side: Brand & Contact */}
         <div className="flex-1">
-          <p className="text-xs uppercase tracking-[0.2em] mb-4 text-[#D4AF37] font-semibold">Decida cuidar de você</p>
-          <h2 className="font-serif text-4xl md:text-6xl text-[#1C1C1C] mb-10 leading-tight">Vamos começar?</h2>
+          <a href="#inicio" className="font-heading text-3xl font-extrabold tracking-tight text-white mb-8 block">
+            Ludmylla<span className="text-[#BFA785]">.</span>
+          </a>
 
-          <div className="flex flex-col gap-8 font-light text-[#1C1C1C]/75 text-base lg:text-lg border-l border-[#16423C]/20 pl-6">
-            <div className="flex items-start gap-4">
-              <Phone className="w-6 h-6 text-[#16423C] shrink-0 mt-1" />
-              <div>
-                <p className="font-semibold text-xs uppercase tracking-[0.15em] text-[#16423C] mb-1">Agendamentos / WhatsApp</p>
-                <p>(31) 99791-7492</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <MapPin className="w-6 h-6 text-[#16423C] shrink-0 mt-1" />
-              <div>
-                <p className="font-semibold text-xs uppercase tracking-[0.15em] text-[#16423C] mb-1">Consultório</p>
-                <p className="leading-relaxed">
-                  Av. dos Engenheiros, 1208 - Castelo<br />
-                  Belo Horizonte - MG<br />
-                  CEP: 30150-250<br />
-                  <em className="text-[#D4AF37] font-medium not-italic block mt-1">+ Atendimento Online (Brasil todo)</em>
-                </p>
-              </div>
-            </div>
-            <div className="mt-6 flex flex-col sm:flex-row gap-4">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex justify-center items-center gap-2 bg-[#16423C] text-[#F2F0E9] px-8 py-4 rounded-full uppercase text-[10px] md:text-xs tracking-widest font-semibold hover:bg-opacity-90 hover:scale-[1.02] transition-all">
-                Agendar via WhatsApp
-              </a>
-              <a href={INSTAGRAM_LINK} target="_blank" rel="noreferrer" className="inline-flex justify-center items-center gap-2 border border-[#16423C]/20 text-[#16423C] px-8 py-4 rounded-full uppercase text-[10px] md:text-xs tracking-widest font-semibold hover:bg-[#16423C]/5 transition-all">
-                <Instagram className="w-4 h-4" /> Seguir Instagram
-              </a>
-            </div>
+          <p className="text-[#F9F5F1]/80 font-medium text-lg leading-relaxed max-w-sm mb-10">
+            Dê o primeiro passo para cuidar de quem realmente importa: você. Agende sua sessão hoje mesmo.
+          </p>
+
+          <div className="flex items-center gap-4 mb-12">
+            <a href={INSTAGRAM_LINK} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-[#F9F5F1]/10 flex items-center justify-center hover:bg-[#BFA785] transition-colors">
+              <Instagram className="w-5 h-5 text-white" />
+            </a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-[#F9F5F1]/10 flex items-center justify-center hover:bg-[#BFA785] transition-colors">
+              <Phone className="w-5 h-5 text-white" />
+            </a>
           </div>
         </div>
 
-        <div className="w-full lg:w-[450px] h-[350px] lg:h-auto rounded-3xl overflow-hidden grayscale-[50%] contrast-[1.1] opacity-90 shadow-2xl hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.9!2d-43.9418!3d-19.9225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU1JzIxLjAiUyA0M8KwNTYnMzAuNSJX!5e0!3m2!1spt-BR!2sbr!4v1"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Localização do consultório Rayane Couto"
-          />
+        {/* Right Side: Map & Info */}
+        <div className="flex-1 flex flex-col md:flex-row gap-12 lg:gap-16">
+          <div className="flex-1">
+            <p className="font-bold text-white text-lg mb-6">Atendimento</p>
+            <ul className="space-y-4 font-medium text-[#F9F5F1]/70">
+              <li className="flex gap-3">
+                <MapPin className="w-6 h-6 text-[#BFA785] shrink-0" />
+                <span>Av. Goiás Norte, 12.373<br />Qd 16, Lt 25 - Res. Recanto do Bosque<br />Goiânia - GO, 74474-310</span>
+              </li>
+              <li className="flex gap-3 pt-2">
+                <Phone className="w-6 h-6 text-[#BFA785] shrink-0" />
+                <span>(62) 99451-5447</span>
+              </li>
+              <li className="flex gap-3 pt-2">
+                <CheckCircle2 className="w-6 h-6 text-[#BFA785] shrink-0" />
+                <span>Atendimento Online para todo o Brasil</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="flex-1 h-[200px] md:h-auto rounded-[2rem] overflow-hidden opacity-90 hover:opacity-100 transition-opacity">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.4278453488824!2d-49.289133!3d-16.6178006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef7a2ad08e5c3%3A0x6b44a30e84b7280!2sPsic%C3%B3loga%20Ludmylla%20Valadares!5e0!3m2!1spt-BR!2sbr!4v1714000000000!5m2!1spt-BR!2sbr"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Localização"
+            />
+          </div>
         </div>
+
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-[#16423C]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] md:text-xs font-semibold text-[#1C1C1C]/40 uppercase tracking-widest">
-        <p>© {new Date().getFullYear()} Rayane Couto. Todos os direitos reservados.</p>
-        <p>Nutricionista Clínica & Esportiva</p>
+      <div className="max-w-7xl mx-auto border-t border-[#F9F5F1]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-[#F9F5F1]/50 tracking-wider">
+        <p>© {new Date().getFullYear()} Ludmylla Valadares. Todos os direitos reservados.</p>
+        <p>Psicóloga Clínica • CRP 09/20060</p>
       </div>
     </footer>
   );
@@ -297,13 +456,14 @@ function LocationAndFooter() {
 function App() {
   useReveal();
   return (
-    <div className="font-sans antialiased text-[#1C1C1C] overflow-x-hidden selection:bg-[#D4AF37]/30">
+    <div className="font-sans antialiased text-[#4A3F35] overflow-x-hidden selection:bg-[#BFA785]/30">
       <Navbar />
       <Hero />
       <About />
       <Services />
-      <Strip />
-      <LocationAndFooter />
+      <Testimonials />
+      <FAQ />
+      <Footer />
     </div>
   );
 }
