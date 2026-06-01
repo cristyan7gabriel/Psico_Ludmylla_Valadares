@@ -73,20 +73,19 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="inicio" className="relative pt-40 pb-10 md:pt-48 md:pb-32 min-h-[100vh] flex items-start md:items-center overflow-hidden">
+    <section id="inicio" className="relative min-h-[100vh] flex flex-col md:block overflow-hidden bg-white md:bg-transparent">
       
-      {/* Full Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* Desktop Background Image (Hidden on mobile) */}
+      <div className="absolute inset-0 z-0 hidden md:block">
         <img
           src="/fotos/Back.png"
           alt="Psicóloga Ludmylla Valadares"
-          className="absolute top-0 left-0 w-[calc(100%+5rem)] h-[calc(100%+5rem)] max-w-none object-cover object-[85%_bottom] md:object-center"
+          className="absolute top-0 left-0 w-[calc(100%+5rem)] h-[calc(100%+5rem)] max-w-none object-cover object-center"
         />
-        {/* Mobile Gradient to ensure text readability over the image */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-transparent md:hidden z-10"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-20">
+      {/* Text Content - Takes top space on mobile, positioned normally over bg on desktop */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-20 flex-1 flex flex-col justify-center pt-32 pb-8 md:pt-48 md:pb-32">
         <div className="reveal-left max-w-xl lg:max-w-2xl flex flex-col items-start text-left">
           <div className="text-[var(--color-brand-olive)] uppercase tracking-widest text-xs sm:text-sm font-bold mb-4 md:mb-5 drop-shadow-sm flex items-center gap-2">
             <span>Psicóloga Clínica</span>
@@ -107,6 +106,17 @@ function Hero() {
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
+      </div>
+
+      {/* Mobile Image - Exclusively at the bottom, taking up remaining space (Hidden on desktop) */}
+      <div className="relative w-full h-[45vh] sm:h-[50vh] md:hidden z-10 mt-auto shrink-0">
+        <img
+          src="/fotos/Back.png"
+          alt="Psicóloga Ludmylla Valadares"
+          className="w-full h-full object-cover object-[75%_top]"
+        />
+        {/* Gradient to blend the hard top edge of the image into the white background */}
+        <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent"></div>
       </div>
     </section>
   );
