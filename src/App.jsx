@@ -156,14 +156,14 @@ function TargetAudience() {
           <div className="w-24 h-1 bg-[var(--color-brand-accent)] mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {audiences.map((item, idx) => (
-            <div key={idx} className="bg-[var(--color-brand-olive)] rounded-[2rem] p-8 text-[var(--color-brand-light)] hover:-translate-y-2 transition-transform duration-300 reveal-up shadow-xl shadow-[var(--color-brand-dark)]/5" style={{ transitionDelay: `${idx * 100}ms` }}>
-              <div className="w-16 h-16 bg-[var(--color-brand-dark)]/20 rounded-2xl flex items-center justify-center mb-6">
-                {item.icon}
+            <div key={idx} className="bg-[var(--color-brand-olive)] rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 text-[var(--color-brand-light)] hover:-translate-y-2 transition-transform duration-300 reveal-up shadow-xl shadow-[var(--color-brand-dark)]/5" style={{ transitionDelay: `${idx * 100}ms` }}>
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-[var(--color-brand-dark)]/20 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                {React.cloneElement(item.icon, { className: "w-6 h-6 md:w-8 md:h-8 text-[var(--color-brand-light)]" })}
               </div>
-              <h3 className="font-heading text-2xl font-bold mb-4">{item.title}</h3>
-              <p className="font-medium text-base leading-relaxed opacity-90">
+              <h3 className="font-heading text-lg md:text-2xl font-bold mb-2 md:mb-4">{item.title}</h3>
+              <p className="font-medium text-xs sm:text-sm md:text-base leading-relaxed opacity-90">
                 {item.desc}
               </p>
             </div>
