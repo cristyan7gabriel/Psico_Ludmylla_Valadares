@@ -73,34 +73,36 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="inicio" className="relative pt-32 pb-20 md:pt-48 md:pb-32 min-h-[100vh] flex items-center overflow-hidden">
-
+    <section id="inicio" className="relative pt-40 pb-10 md:pt-48 md:pb-32 min-h-[100vh] flex items-start md:items-center overflow-hidden">
+      
       {/* Full Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src="/fotos/Back.png"
           alt="Psicóloga Ludmylla Valadares"
-          className="absolute top-0 left-0 w-[calc(100%+5rem)] h-[calc(100%+5rem)] max-w-none object-cover object-[70%_top] md:object-center"
+          className="absolute top-0 left-0 w-[calc(100%+5rem)] h-[calc(100%+5rem)] max-w-none object-cover object-[85%_bottom] md:object-center"
         />
+        {/* Mobile Gradient to ensure text readability over the image */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-transparent md:hidden z-10"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-20">
         <div className="reveal-left max-w-xl lg:max-w-2xl flex flex-col items-start text-left">
-          <div className="text-[var(--color-brand-olive)] uppercase tracking-widest text-xs sm:text-sm font-bold mb-5 drop-shadow-sm flex items-center gap-2">
+          <div className="text-[var(--color-brand-olive)] uppercase tracking-widest text-xs sm:text-sm font-bold mb-4 md:mb-5 drop-shadow-sm flex items-center gap-2">
             <span>Psicóloga Clínica</span>
             <span>•</span>
             <span>CRP: 09/20060</span>
           </div>
 
-          <h1 className="font-heading text-5xl sm:text-6xl lg:text-[5rem] font-normal text-[var(--color-brand-dark)] leading-[1.1] mb-8 drop-shadow-sm tracking-tight">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-[5rem] font-normal text-[var(--color-brand-dark)] leading-[1.1] mb-6 md:mb-8 drop-shadow-sm tracking-tight">
             Redescubra sua força e assuma o controle da sua <span className="text-[var(--color-brand-accent)] italic pr-2">saúde emocional.</span>
           </h1>
 
-          <p className="text-[var(--color-brand-dark)]/80 text-lg md:text-xl font-normal mb-10 leading-relaxed drop-shadow-sm max-w-[90%]">
+          <p className="text-[var(--color-brand-dark)]/90 md:text-[var(--color-brand-dark)]/80 text-base sm:text-lg md:text-xl font-medium md:font-normal mb-8 md:mb-10 leading-relaxed drop-shadow-sm max-w-[95%] md:max-w-[90%]">
             Através de uma psicoterapia integrativa e humanizada, vamos além dos sintomas para construir o bem-estar que você merece.
           </p>
 
-          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[var(--color-brand-accent)] text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-wine)] hover:scale-105 transition-all duration-300 shadow-xl shadow-[var(--color-brand-accent)]/30 uppercase tracking-wide">
+          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[var(--color-brand-accent)] text-white px-6 py-4 md:px-8 md:py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-wine)] hover:scale-105 transition-all duration-300 shadow-xl shadow-[var(--color-brand-accent)]/30 uppercase tracking-wide w-full sm:w-auto">
             Agendar minha primeira sessão
             <ArrowRight className="w-4 h-4" />
           </a>
