@@ -75,12 +75,17 @@ function Hero() {
   return (
     <section id="inicio" className="relative min-h-[100vh] flex flex-col md:block overflow-hidden bg-white md:bg-transparent">
       
+      {/* Decorative Blobs */}
+      <div className="absolute top-10 right-[10%] w-96 h-96 bg-[var(--color-brand-accent)]/20 rounded-full blur-[100px] animate-pulse-soft z-0 pointer-events-none"></div>
+      <div className="absolute bottom-10 left-[5%] w-96 h-96 bg-[var(--color-brand-green-sage)]/20 rounded-full blur-[100px] animate-float-delayed z-0 pointer-events-none"></div>
+
       {/* Desktop Background Image (Hidden on mobile) */}
-      <div className="absolute inset-0 z-0 hidden md:block">
+      <div className="absolute inset-0 z-0 hidden md:block pointer-events-none">
         <img
           src="/fotos/Back.png"
           alt="Psicóloga Ludmylla Valadares"
-          className="absolute top-0 left-0 w-[calc(100%+5rem)] h-[calc(100%+5rem)] max-w-none object-cover object-center"
+          className="absolute top-0 left-0 w-[calc(100%+5rem)] h-[calc(100%+5rem)] max-w-none object-cover object-center animate-float-delayed"
+          style={{ animationDuration: '12s' }}
         />
       </div>
 
@@ -101,22 +106,22 @@ function Hero() {
             Através de uma psicoterapia integrativa e humanizada, vamos além dos sintomas para construir o bem-estar que você merece.
           </p>
 
-          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[var(--color-brand-accent)] text-white px-6 py-4 md:px-8 md:py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-wine)] hover:scale-105 transition-all duration-300 shadow-xl shadow-[var(--color-brand-accent)]/30 uppercase tracking-wide w-full sm:w-auto">
+          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[var(--color-brand-accent)] text-white px-6 py-4 md:px-8 md:py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-wine)] hover:scale-105 transition-all duration-300 shadow-xl shadow-[var(--color-brand-accent)]/30 uppercase tracking-wide w-full sm:w-auto animate-pulse-soft hover:animate-none group">
             Agendar minha primeira sessão
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:animate-bounce-x" />
           </a>
         </div>
       </div>
 
       {/* Mobile Image - Exclusively at the bottom, taking up remaining space (Hidden on desktop) */}
-      <div className="relative w-full h-[45vh] sm:h-[50vh] md:hidden z-10 mt-auto shrink-0">
+      <div className="relative w-full h-[45vh] sm:h-[50vh] md:hidden z-10 mt-auto shrink-0 bg-[var(--color-brand-light)]">
         <img
           src="/fotos/Back.png"
           alt="Psicóloga Ludmylla Valadares"
-          className="w-full h-full object-cover object-[75%_top]"
+          className="w-full h-full object-cover object-[85%_top]"
         />
-        {/* Gradient to blend the hard top edge of the image into the white background */}
-        <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent"></div>
+        {/* Gradient to blend the bottom edge of the image into the next section */}
+        <div className="absolute bottom-[-1px] inset-x-0 h-32 bg-gradient-to-t from-[var(--color-brand-beige)] to-transparent"></div>
       </div>
     </section>
   );
@@ -159,7 +164,7 @@ function TargetAudience() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {audiences.map((item, idx) => (
             <div key={idx} className="bg-[var(--color-brand-olive)] rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 text-[var(--color-brand-light)] hover:-translate-y-2 transition-transform duration-300 reveal-up shadow-xl shadow-[var(--color-brand-dark)]/5" style={{ transitionDelay: `${idx * 100}ms` }}>
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-[var(--color-brand-dark)]/20 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-[var(--color-brand-dark)]/20 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 animate-float">
                 {React.cloneElement(item.icon, { className: "w-6 h-6 md:w-8 md:h-8 text-[var(--color-brand-light)]" })}
               </div>
               <h3 className="font-heading text-lg md:text-2xl font-bold mb-2 md:mb-4">{item.title}</h3>
@@ -201,8 +206,8 @@ function Specialties() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {specialties.map((item, idx) => (
-            <div key={idx} className="bg-[var(--color-brand-green-sage)]/30 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 hover:bg-[var(--color-brand-green-sage)] transition-colors duration-300 reveal-up border border-[var(--color-brand-olive)]/10" style={{ transitionDelay: `${idx * 50}ms` }}>
-              <div className="bg-white p-3 rounded-full shadow-sm">
+            <div key={idx} className="bg-[var(--color-brand-green-sage)]/30 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 hover:bg-[var(--color-brand-green-sage)] hover:-translate-y-2 hover:shadow-lg transition-all duration-300 reveal-up border border-[var(--color-brand-olive)]/10 group" style={{ transitionDelay: `${idx * 50}ms` }}>
+              <div className="bg-white p-3 rounded-full shadow-sm group-hover:animate-float">
                 {item.icon}
               </div>
               <h3 className="font-bold text-[var(--color-brand-dark)] text-[15px]">{item.title}</h3>
@@ -236,17 +241,17 @@ function About() {
           </div>
 
           <div className="mt-10">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 bg-[var(--color-brand-dark)] text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-olive)] hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-[var(--color-brand-dark)]/20 uppercase tracking-wide">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 bg-[var(--color-brand-dark)] text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-olive)] hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-[var(--color-brand-dark)]/20 uppercase tracking-wide group">
               Falar com a Ludmylla
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 group-hover:animate-bounce-x" />
             </a>
           </div>
         </div>
 
         {/* Right Side: Image */}
         <div className="reveal-right relative w-full h-[400px] sm:h-[500px] lg:h-[600px] order-1 lg:order-2">
-          <div className="absolute inset-0 bg-[var(--color-brand-olive)]/20 rounded-[2rem] transform rotate-3 scale-105"></div>
-          <div className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white bg-[var(--color-brand-beige)] flex items-center justify-center">
+          <div className="absolute inset-0 bg-[var(--color-brand-olive)]/20 rounded-[2rem] transform rotate-3 scale-105 animate-pulse-soft"></div>
+          <div className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white bg-[var(--color-brand-beige)] flex items-center justify-center animate-float-delayed">
             <img
               src="/fotos/Ludmylla5.png"
               alt="Ludmylla Valadares"
@@ -331,21 +336,21 @@ function CTA() {
             
             {/* Steps */}
             <div className="relative z-10 flex flex-col items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm border border-[var(--color-brand-olive)]/10 text-[var(--color-brand-olive)]">
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm border border-[var(--color-brand-olive)]/10 text-[var(--color-brand-olive)] animate-float">
                 <Calendar className="w-6 h-6" />
               </div>
               <span className="font-bold text-[var(--color-brand-dark)] text-sm md:text-base">Agendar</span>
             </div>
 
             <div className="relative z-10 flex flex-col items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm border border-[var(--color-brand-olive)]/10 text-[var(--color-brand-olive)]">
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm border border-[var(--color-brand-olive)]/10 text-[var(--color-brand-olive)] animate-float-delayed">
                 <MessageCircle className="w-6 h-6" />
               </div>
               <span className="font-bold text-[var(--color-brand-dark)] text-sm md:text-base">Conversar</span>
             </div>
 
             <div className="relative z-10 flex flex-col items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm border border-[var(--color-brand-olive)]/10 text-[var(--color-brand-olive)]">
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm border border-[var(--color-brand-olive)]/10 text-[var(--color-brand-olive)] animate-float">
                 <Leaf className="w-6 h-6" />
               </div>
               <span className="font-bold text-[var(--color-brand-dark)] text-sm md:text-base">Evoluir</span>
@@ -375,9 +380,9 @@ function CTA() {
             ))}
           </div>
 
-          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[var(--color-brand-accent)] text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-wine)] hover:scale-105 transition-all duration-300 shadow-xl shadow-[var(--color-brand-accent)]/30 uppercase tracking-wide">
+          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-3 bg-[var(--color-brand-accent)] text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-[var(--color-brand-wine)] hover:scale-105 transition-all duration-300 shadow-xl shadow-[var(--color-brand-accent)]/30 uppercase tracking-wide animate-pulse-soft hover:animate-none group">
             Agendar minha primeira sessão
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:animate-bounce-x" />
           </a>
         </div>
       </div>

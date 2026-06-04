@@ -5,13 +5,13 @@
 @tailwind utilities;
 
 :root {
-  --color-brand-light: #FDF8F5; /* Rosa claro/Nude */
-  --color-brand-dark: #2C4C3B; /* Verde musgo escuro */
-  --color-brand-accent: #C48B85; /* Rosa antigo/Terracota */
-  --color-brand-green-sage: #C4D4C5; /* Verde sálvia */
-  --color-brand-olive: #7A8B76; /* Verde oliva acinzentado */
-  --color-brand-beige: #E3E7DF; /* Bege esverdeado */
-  --color-brand-wine: #722F37; /* Vinho/Bordô */
+  --color-brand-light: #F9F7F5; /* Off-white / fundo claro */
+  --color-brand-dark: #3a3d33; /* Dark sage / texto escuro */
+  --color-brand-accent: #AE6965; /* Faded Rust (Accent / CTAs) */
+  --color-brand-green-sage: #7A816C; /* Dried Sage */
+  --color-brand-olive: #A58B71; /* Warm Oak */
+  --color-brand-beige: #E5DFD6; /* Bone */
+  --color-brand-wine: #D1A9A5; /* Dusty Rose */
 }
 
 html {
@@ -42,6 +42,48 @@ body {
 }
 
 /* Hide scrollbar for horizontal scroll areas */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float-delayed {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+  100% { transform: translateY(0px); }
+}
+.animate-float-delayed {
+  animation: float-delayed 7s ease-in-out infinite 2s;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.9; }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes bounce-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+.animate-bounce-x {
+  animation: bounce-x 2s ease-in-out infinite;
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
